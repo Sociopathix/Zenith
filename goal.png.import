@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/mousepx.png-79cde8aa38cfd8fd3ba4b99b0201a44c.stex"
+path="res://.import/goal.png-0c667cdea5a1e49b564b867d565eb4ec.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/mousepx.png"
-dest_files=[ "res://.import/mousepx.png-79cde8aa38cfd8fd3ba4b99b0201a44c.stex" ]
+source_file="res://assets/goal.png"
+dest_files=[ "res://.import/goal.png-0c667cdea5a1e49b564b867d565eb4ec.stex" ]
 
 [params]
 
