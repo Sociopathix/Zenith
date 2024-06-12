@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://16gnhqblpuc2"]
+
+[ext_resource type="Texture2D" uid="uid://cwqero3pjmiek" path="res://Assets/fighter0.png" id="1_4j7nr"]
+[ext_resource type="Texture2D" uid="uid://bx8rfickqr30s" path="res://Assets/p1select.png" id="2_o6v4c"]
+[ext_resource type="Script" path="res://Scripts/CharacterSelect.gd" id="2_r8yss"]
+
+[node name="CharacterSelect" type="TextureRect" node_paths=PackedStringArray("select_box")]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_4j7nr")
+script = ExtResource("2_r8yss")
+select_box = NodePath("SelectBox")
+
+[node name="SelectBox" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_o6v4c")
