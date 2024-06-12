@@ -1,0 +1,85 @@
+[gd_scene load_steps=8 format=3 uid="uid://ow30g7vidqm1"]
+
+[ext_resource type="Script" path="res://Scripts/Main.gd" id="1_t1rir"]
+[ext_resource type="PackedScene" uid="uid://16gnhqblpuc2" path="res://Scenes/CharacterSelect.tscn" id="2_qpfvc"]
+[ext_resource type="PackedScene" uid="uid://py1odmsrbang" path="res://Scenes/ArenaSelect.tscn" id="3_fynm2"]
+[ext_resource type="FontFile" uid="uid://dmumilcul2nir" path="res://Assets/segoescript.ttf" id="3_mgdrm"]
+[ext_resource type="Texture2D" uid="uid://cwyh4msgfbj5d" path="res://Assets/selectScreen.png" id="4_eovh8"]
+[ext_resource type="Script" path="res://Scripts/StartLabel.gd" id="5_o412r"]
+[ext_resource type="Texture2D" uid="uid://byjc780mim5hx" path="res://Assets/arena0.png" id="7_qs03h"]
+
+[node name="Main" type="Node" node_paths=PackedStringArray("background", "start_label", "character_label", "arena_display")]
+script = ExtResource("1_t1rir")
+character_scene = ExtResource("2_qpfvc")
+arena_scene = ExtResource("3_fynm2")
+background = NodePath("Background")
+start_label = NodePath("Background/StartLabel")
+character_label = NodePath("Background/CharacterLabel")
+arena_display = NodePath("Background/ArenaDisplay")
+images_dir = "res://Assets"
+character_names = Array[String](["Scorpion", "Johnny Cage", "Raiden", "Liu Kane", "Tonya", "Kano", "Sub-Zero"])
+arena_names = Array[String](["arena0", "arena1", "arena2", "arena3"])
+
+[node name="Background" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_eovh8")
+
+[node name="StartLabel" type="Label" parent="Background"]
+visible = false
+layout_mode = 0
+offset_left = 337.0
+offset_top = 419.0
+offset_right = 591.0
+offset_bottom = 470.0
+theme_override_colors/font_color = Color(0.635294, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0.635294, 1, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_mgdrm")
+theme_override_font_sizes/font_size = 30
+text = "PRESS ENTER"
+horizontal_alignment = 1
+script = ExtResource("5_o412r")
+color_list = Array[Color]([Color(0.635294, 1, 0, 1), Color(0, 0, 0, 1)])
+
+[node name="Timer" type="Timer" parent="Background/StartLabel"]
+wait_time = 0.25
+autostart = true
+
+[node name="CharacterLabel" type="Label" parent="Background"]
+visible = false
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 11.0
+offset_top = -60.0
+offset_right = 77.0
+offset_bottom = -12.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.635294, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0.635294, 1, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_mgdrm")
+theme_override_font_sizes/font_size = 30
+text = "P1: "
+
+[node name="ArenaDisplay" type="TextureRect" parent="Background"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -138.0
+offset_top = -141.0
+offset_right = 138.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("7_qs03h")
+
+[connection signal="timeout" from="Background/StartLabel/Timer" to="Background/StartLabel" method="_on_timer_timeout"]
