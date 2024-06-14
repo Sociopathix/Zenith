@@ -1,6 +1,7 @@
 extends Node;
 
 @export_group("General")
+@export var selection_scene : PackedScene;
 @export var background : TextureRect;
 @export_dir var images_dir : 	String;
 
@@ -8,8 +9,6 @@ extends Node;
 @export var start_label : Label;
 @export var color_list : Array[Color];
 var color_index : int = 0;
-
-@export var selection_scene : PackedScene;
 
 @export_group("Character Screen")
 @export var character_label : Label;
