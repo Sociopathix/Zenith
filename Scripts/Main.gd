@@ -1,28 +1,44 @@
 extends Node;
 
 @export_group("General")
+# Used for character and arena selection icons.
 @export var selection_scene : PackedScene;
+# The background image of the game.
 @export var background : TextureRect;
-@export_dir var images_dir : 	String;
+# The name of the folder the images are in.
+@export_dir var images_dir : String;
 
 @export_group("Start Screen")
+# The "PRESS ENTER" label.
 @export var start_label : Label;
+# A list with the green and black colors the "PRESS ENTER" label alternates between.
 @export var color_list : Array[Color];
+# The index of the current color of the "PRESS ENTER" label.
 var color_index : int = 0;
 
 @export_group("Character Screen")
+# The label that displays the currently focused character's name.
 @export var character_label : Label;
+# A list of all the character names.
 @export var character_names : Array[String];
+# A list of the current character icons on screen.
 var character_list : Array[Selection];
+# The index of the currently focused character icon.
 var character_index : int = 0;
+# Whether or not a character has been chosen.
 var character_chosen : bool = false;
 
 @export_group("Arena Screen")
+# A list of all the current arena icons on screen.
 var arena_list : Array[Selection];
+# The index of the currently focused arena icon.
 var arena_index : int = 0;
+# Whether or not an arena has been chosen.
 var arena_chosen : bool = false;
 
+# All possible screens.
 enum SCREENS {START, CHARACTER, ARENA, GAME};
+# The screen that is currently being displayed.
 var screen : int = SCREENS.START;
 
 # Called automatically whenever the game first loads.
