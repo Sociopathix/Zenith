@@ -48,9 +48,11 @@ public class Game extends JPanel implements KeyListener{
     }
     
     public void blit(Graphics g, String img, double x, double y) {
-            Image i = new ImageIcon("images\\" + img + ".png").getImage();
-            g.drawImage(i, (int)x, (int)y, null);
-    }
+        String separator = System.getProperty("file.separator");
+        Image i = new ImageIcon("images" + separator + img + ".png").getImage();
+        g.drawImage(i, (int)x, (int)y, null);
+        }
+
     @Override   
     public void paint(Graphics g) {
         super.paint(g);
