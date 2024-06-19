@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://bda5ea56shckm"]
+
+[ext_resource type="Script" path="res://Scripts/Main.gd" id="1_o1464"]
+[ext_resource type="Texture2D" uid="uid://dy8v3gbw48m6a" path="res://Assets/startScreen.png" id="1_x5eyd"]
+[ext_resource type="PackedScene" uid="uid://dq0vlg7c3frij" path="res://Scene/Selection.tscn" id="2_tah5d"]
+[ext_resource type="FontFile" uid="uid://v3lq4q7lis2x" path="res://Assets/segoescript.ttf" id="3_qnk08"]
+[ext_resource type="Script" path="res://Scripts/StartLabel.gd" id="4_t2v37"]
+
+[node name="Main" type="Node" node_paths=PackedStringArray("background", "start_label")]
+script = ExtResource("1_o1464")
+selection_scene = ExtResource("2_tah5d")
+background = NodePath("Background")
+start_label = NodePath("StartLabel")
+
+[node name="Background" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_x5eyd")
+
+[node name="StartLabel" type="Label" parent="."]
+offset_left = 347.0
+offset_top = 418.0
+offset_right = 584.0
+offset_bottom = 466.0
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0.921569, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0.921569, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_qnk08")
+theme_override_font_sizes/font_size = 30
+text = "PRESS ENTER"
+horizontal_alignment = 1
+script = ExtResource("4_t2v37")
+color_list = Array[Color]([Color(0, 1, 0, 1), Color(0, 0, 0, 1)])
+
+[node name="StartTimer" type="Timer" parent="StartLabel"]
+wait_time = 0.25
+autostart = true
+
+[connection signal="timeout" from="StartLabel/StartTimer" to="StartLabel" method="_on_start_timer_timeout"]
