@@ -1,5 +1,6 @@
 shader_type canvas_item;
-uniform bool grayscale = true;
+
+uniform bool grayscale  = true;
 
 void fragment() 
 {

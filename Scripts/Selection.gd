@@ -1,9 +1,7 @@
 extends TextureRect;
 class_name Selection;
 
-@export var select_box : SelectBox;
-
-var character_name : String;
+@export var select_box : TextureRect;
 
 func _ready() -> void:
 	
@@ -11,11 +9,10 @@ func _ready() -> void:
 
 func focus() -> void:
 	
-	select_box.start_flashing();
 	get_material().set_shader_parameter("grayscale", false);
+	select_box.show();
 
 func unfocus() -> void:
 	
-	select_box.stop_flashing();
-	select_box.hide();
 	get_material().set_shader_parameter("grayscale", true);
+	select_box.hide();
