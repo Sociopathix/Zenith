@@ -1,17 +1,18 @@
 extends TextureRect;
 class_name SelectBox;
 
-@export var timer : Timer;
+@export var select_timer : Timer;
 
-func start_flashing() -> void:
+func start_flash() -> void:
 	
-	timer.start();
-
-func stop_flashing() -> void:
-	
-	timer.stop();
+	select_timer.start();
 	show();
 
-func _on_timer_timeout() -> void:
+func stop_flash() -> void:
 	
-	visible = !visible;
+	select_timer.stop();
+	hide();
+
+func _on_select_timer_timeout() -> void:
+	
+	visible = not visible;
